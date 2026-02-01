@@ -221,14 +221,14 @@ def summarizing_results():
             key = os.path.basename(csv_file).replace(".csv", "")
             key = f"{current_folder_name}_{key}"
             df = pd.read_csv(csv_file, index_col=0)
-            result_summary_dict[key] = [df.loc["X", "Scaled 90% Energy"],
-                                        df.loc["Y", "Scaled 90% Energy"],
-                                        df.loc["X", "Scaled 60% Energy"],
-                                        df.loc["Y", "Scaled 60% Energy"],
-                                        df.loc["X", "Scaled Yen"],
-                                        df.loc["Y", "Scaled Yen"],
-                                        df.loc["X", "Scaled Peak Flux"],
-                                        df.loc["Y", "Scaled Peak Flux"]]
+            result_summary_dict[key] = [df.loc["X", "Original 90% Energy"],
+                                        df.loc["Y", "Original 90% Energy"],
+                                        df.loc["X", "Original 60% Energy"],
+                                        df.loc["Y", "Original 60% Energy"],
+                                        df.loc["X", "Original Yen"],
+                                        df.loc["Y", "Original Yen"],
+                                        df.loc["X", "Original Peak Flux"],
+                                        df.loc["Y", "Original Peak Flux"]]
     result_summary_df = pd.DataFrame.from_dict(result_summary_dict, orient='index', columns=column_names)
     # save the summary dataframe to csv
     summary_csv_file = os.path.join(result_folder, "beam_centers_summary.csv")
@@ -237,6 +237,6 @@ def summarizing_results():
             
 
 if __name__ == "__main__":
-    main()
+    # main()
     # print("Processing completed.")
     summarizing_results()
